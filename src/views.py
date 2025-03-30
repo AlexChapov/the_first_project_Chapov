@@ -11,3 +11,6 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 load_dotenv("../.env")
 API_TOKEN = os.getenv("API_TOKEN")
+
+
+def main(datetime_str: str) -> str:
