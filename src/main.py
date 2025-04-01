@@ -14,7 +14,7 @@ logger.setLevel(logging.INFO)
 
 file_path = str(Path(__file__).resolve().parent.parent) + "\\data\\operations.xlsx"
 data_frame = read_excel(file_path)
-#data_frame = read_excel("../data/operations.xlsx")
+# data_frame = read_excel("../data/operations.xlsx")
 
 
 def main(date: str, df_transactions, stocks: list, currency: list):
@@ -27,13 +27,15 @@ def main(date: str, df_transactions, stocks: list, currency: list):
     stocks_prices = get_price_stock(stocks)
     currency_r = currency_rates(currency)
     logger.info("Создание JSON ответа")
-    result = [{
+    result = [
+        {
             "greeting": greeting,
             "cards": cards,
             "top_transactions": top_trans,
             "currency_rates": currency_r,
             "stock_prices": stocks_prices,
-        }]
+        }
+    ]
     date_json = json.dumps(
         result,
         indent=4,

@@ -1,6 +1,6 @@
+import datetime
 import logging
 from datetime import datetime
-import datetime
 
 logger = logging.getLogger("views.log")
 file_handler = logging.FileHandler("views.log", "w")
@@ -22,9 +22,9 @@ def filter_by_date(date: str, my_list: list) -> list:
         if i["Дата платежа"] == "nan" or type(i["Дата платежа"]) is float:
             continue
         elif (
-                date_obj
-                >= datetime.datetime.strptime(str(i["Дата платежа"]), "%d.%m.%Y")
-                >= date_obj - datetime.timedelta(days=day - 1)
+            date_obj
+            >= datetime.datetime.strptime(str(i["Дата платежа"]), "%d.%m.%Y")
+            >= date_obj - datetime.timedelta(days=day - 1)
         ):
             list_by_date.append(i)
     logger.info("Конец работы функции (filter_by_date)")

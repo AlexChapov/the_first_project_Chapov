@@ -104,8 +104,8 @@ def top_five_transaction(my_list: list) -> list:
             if i["Категория"] != "Пополнения":
                 all_transactions[i["Категория"]] = float(str(i["Сумма платежа"])[1:])
         elif (
-                i["Категория"] in all_transactions
-                and float(str(i["Сумма платежа"])[1:]) > all_transactions[i["Категория"]]
+            i["Категория"] in all_transactions
+            and float(str(i["Сумма платежа"])[1:]) > all_transactions[i["Категория"]]
         ):
             all_transactions[i["Категория"]] = float(str(i["Сумма платежа"])[1:])
     for i in my_list:
