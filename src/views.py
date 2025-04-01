@@ -1,9 +1,16 @@
 import datetime
 import logging
 from datetime import datetime
+import os
 
-logger = logging.getLogger("views.log")
-file_handler = logging.FileHandler("views.log", "w")
+
+log_dir = "../logs"
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
+
+logger = logging.getLogger("views")
+file_handler = logging.FileHandler("../logs/views.log", "w")
 file_formatter = logging.Formatter("%(asctime)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)

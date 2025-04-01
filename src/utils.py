@@ -8,13 +8,19 @@ import pandas as pd
 import requests
 from dotenv import load_dotenv
 
+
+log_dir = "../logs"
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
+
 load_dotenv()
 API_KEY_CUR = os.getenv("API_KEY_CUR")
 
 SP_500_API_KEY = os.getenv("SP_500_API_KEY")
 
-logger = logging.getLogger("utils.log")
-file_handler = logging.FileHandler("utils.log", "w")
+logger = logging.getLogger("utils")
+file_handler = logging.FileHandler("../logs/utils.log", "w")
 file_formatter = logging.Formatter("%(asctime)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)

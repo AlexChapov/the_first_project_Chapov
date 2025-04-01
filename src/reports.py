@@ -2,13 +2,19 @@ import datetime
 import json
 import logging
 from typing import Any, Callable, Optional
-
+import os
 import pandas as pd
 
 from src.decorators import decorator_spending_by_category
 
-logger = logging.getLogger("report.log")
-file_handler = logging.FileHandler("report.log", "w")
+
+log_dir = "../logs"
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
+
+logger = logging.getLogger("report")
+file_handler = logging.FileHandler("../logs/report.log", "w")
 file_formatter = logging.Formatter("%(asctime)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)

@@ -1,10 +1,16 @@
 import json
 import logging
-
+import os
 from src.decorators import decorator_search
 
-logger = logging.getLogger("services.log")
-file_handler = logging.FileHandler("services.log", "w")
+
+log_dir = "../logs"
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
+
+logger = logging.getLogger("services")
+file_handler = logging.FileHandler("../logs/services.log", "w")
 file_formatter = logging.Formatter("%(asctime)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)

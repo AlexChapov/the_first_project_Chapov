@@ -5,8 +5,8 @@ from pathlib import Path
 from src.utils import currency_rates, for_each_card, get_price_stock, greetings, read_excel, top_five_transaction
 from src.views import filter_by_date
 
-logger = logging.getLogger("utils.log")
-file_handler = logging.FileHandler("main.log", "w")
+logger = logging.getLogger("main")
+file_handler = logging.FileHandler("../logs/main.log", "w")
 file_formatter = logging.Formatter("%(asctime)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
