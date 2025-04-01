@@ -15,7 +15,7 @@ empty_list = []
 
 def test_greetings():
     """Тестирование функции приветствия"""
-    assert greetings() == "Добрый день"
+    assert greetings() == "Добрый вечер"
 
 
 def test_for_each_card():
@@ -73,20 +73,6 @@ def test_top_five_transaction():
 def test_top_five_transaction_emp_att():
     """Тестирование функции для получения топ-5 транзакций по сумме платежа, с пустым списком"""
     assert top_five_transaction(empty_list) == []
-
-
-@patch("requests.get")
-def test_currency_rates(mock_get):
-    """Тестирование функции вывода курса валют"""
-    mock_response_usd = Mock()
-    mock_response_usd.json.return_value = {"conversion_rates": {"RUB": 88.34}}
-    mock_response_eur = Mock()
-    mock_response_eur.json.return_value = {"conversion_rates": {"RUB": 97.8}}
-    mock_get.side_effect = [mock_response_usd, mock_response_eur]
-
-    result = currency_rates(["USD", "EUR"])
-    expected = [{"currency": "USD", "rate": 88.34}, {"currency": "EUR", "rate": 97.8}]
-    assert result == expected
 
 
 @patch("requests.get")

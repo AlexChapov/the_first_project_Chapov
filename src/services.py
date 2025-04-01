@@ -1,8 +1,8 @@
 import json
 import logging
 import os
-from src.decorators import decorator_search
 
+from src.decorators import decorator_search
 
 log_dir = "../logs"
 if not os.path.exists(log_dir):

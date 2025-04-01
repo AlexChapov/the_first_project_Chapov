@@ -1,3 +1,4 @@
+from pathlib import Path
 from unittest.mock import patch
 
 from src.main import main
@@ -35,8 +36,8 @@ def test_main(mock_get):
         "currency_rates": [{"currency": "USD", "rate": 91.38}, {"currency": "EUR", "rate": 102.1}],
         "stock_prices": [{"stock": "AAPL", "price": 228.03}],
     }
-    res = main("2021.11.30", "../data/operations.xlsx", ["AAPL"], ["USD", "EUR"])
-    ext = {
+
+    expected_output = {
         "greeting": "Добрый день",
         "cards": [
             {"last_digits": "4556", "total_spent": 30862.13, "cashback": 308.62},
@@ -66,5 +67,5 @@ def test_main(mock_get):
         "currency_rates": [{"currency": "USD", "rate": 91.38}, {"currency": "EUR", "rate": 102.1}],
         "stock_prices": [{"stock": "AAPL", "price": 228.03}],
     }
-
-    assert res == ext
+    actual_output = main(str(Path("2021.11.30")), "../data/operations.xlsx", ["AAPL"], ["USD", "EUR"])
+    assert actual_output == expected_output

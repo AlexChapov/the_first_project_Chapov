@@ -5,7 +5,7 @@ from pathlib import Path
 from src.utils import currency_rates, for_each_card, get_price_stock, greetings, read_excel, top_five_transaction
 from src.views import filter_by_date
 
-logger = logging.getLogger("main")
+logger = logging.getLogger("utils")
 file_handler = logging.FileHandler("../logs/main.log", "w")
 file_formatter = logging.Formatter("%(asctime)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
@@ -14,7 +14,6 @@ logger.setLevel(logging.INFO)
 
 file_path = str(Path(__file__).resolve().parent.parent) + "\\data\\operations.xlsx"
 data_frame = read_excel(file_path)
-# data_frame = read_excel("../data/operations.xlsx")
 
 
 def main(date: str, df_transactions, stocks: list, currency: list):

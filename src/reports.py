@@ -1,12 +1,12 @@
 import datetime
 import json
 import logging
-from typing import Any, Callable, Optional
 import os
+from typing import Any, Callable, Optional
+
 import pandas as pd
 
 from src.decorators import decorator_spending_by_category
-
 
 log_dir = "../logs"
 if not os.path.exists(log_dir):

@@ -8,7 +8,6 @@ import pandas as pd
 import requests
 from dotenv import load_dotenv
 
-
 log_dir = "../logs"
 if not os.path.exists(log_dir):
     os.makedirs(log_dir)
