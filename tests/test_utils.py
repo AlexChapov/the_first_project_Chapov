@@ -20,7 +20,6 @@ empty_list = []
     [(8, "Доброе утро"), (15, "Добрый день"), (21, "Добрый вечер"), (2, "Доброй ночи")],
 )
 def test_greetings(input_hour, expected_greeting):
-    """Test the greetings function with different time inputs."""
     with freeze_time(f"2023-04-01 {input_hour}:00:00"):
         assert greetings() == expected_greeting
 
