@@ -2,7 +2,9 @@ import os
 from pathlib import Path
 from unittest.mock import Mock, patch
 
+import pytest
 from dotenv import load_dotenv
+from freezegun import freeze_time
 
 from src.utils import currency_rates, for_each_card, get_price_stock, greetings, read_excel, top_five_transaction
 
@@ -13,9 +15,14 @@ my_list = read_excel(file_path)
 empty_list = []
 
 
-def test_greetings():
-    """Тестирование функции приветствия"""
-    assert greetings() == "Добрый вечер"
+@pytest.mark.parametrize(
+    "input_hour, expected_greeting",
+    [(8, "Доброе утро"), (15, "Добрый день"), (21, "Добрый вечер"), (2, "Доброй ночи")],
+)
+def test_greetings(input_hour, expected_greeting):
+    """Test the greetings function with different time inputs."""
+    with freeze_time(f"2023-04-01 {input_hour}:00:00"):
+        assert greetings() == expected_greeting
 
 
 def test_for_each_card():
